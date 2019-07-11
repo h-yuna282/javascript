@@ -1,0 +1,113 @@
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<head></head>
+<div class="container">
+        <body background="red">  
+  <form>
+   <div class="form-group">
+    <p>
+      <label>Entre su Nombre:</label> <br>
+      <input id="nombre" class="form-control" type="text" placeholder="Nombre..."><br>
+    </p>
+    <p>
+      <label>Entre su Apellido:</label> <br>
+      <input id="apellido" class="form-control" type="text" placeholder="Apellido..."><br>
+
+      <p>
+        <label from= "genero">Genero</label> <select name="select" id="genero">
+            <option value="Masculino">Masculino</option>
+            <option value="Femenino">Femenino</option>
+        </select>
+    </p>
+    <p>
+        <label for="EstadoCivil">Estado Civil</label> <input type="radio" name="Estado" value="Casado"> Casado <input type="radio" name="Estado" value="Soltero"> Soltero <br>
+       
+    </p>
+</div>  
+    <button id="adicionar" class="btn btn-success" type="button" onclick="agregar()">Adicionar a la tabla</button>
+  </div>
+</form>
+
+<p>Elementos en la Tabla:
+  <div id="adicionados"></div>
+</p>
+<table  id="mytable" class="table table-bordered table-hover ">
+  <tr>
+    <th>Nobmre</th>
+    <th>Apellidos</th>
+    <th>genero</th>
+    <th>estado civil</th>
+    
+
+  </tr>
+</table>
+
+</div>
+
+<script> 
+    function agregar(){
+
+
+
+       
+        var nombre = document.getElementById("nombre").value;
+        var apellido = document.getElementById("apellido").value;
+
+
+        if (nombre!='' && apellido!=''){
+
+            var genero = document.getElementById("genero").value;
+            var estadocivil = document.querySelector('input[name="Estado"]:checked').value;
+            
+
+            var table = document.getElementById("mytable");
+            var tr = document.createElement("tr");
+
+
+            var textcol1 = document.createTextNode(nombre);
+            var textcol2 = document.createTextNode(apellido);
+            var textcol3 = document.createTextNode(genero);
+            var textcol4 = document.createTextNode(estadocivil);
+
+
+            var col1 = document.createElement("td");
+            var col2 = document.createElement("td");
+            var col3 = document.createElement("td");
+            var col4 = document.createElement("td");
+
+            
+
+            col1.appendChild(textcol1);
+            col2.appendChild(textcol2);
+            col3.appendChild(textcol3);
+            col4.appendChild(textcol4);
+
+            tr.appendChild(col1);
+            tr.appendChild(col2);
+            tr.appendChild(col3);
+            tr.appendChild(col4);
+
+            table.appendChild(tr);
+
+
+            document.getElementById("nombre").value = ''
+            document.getElementById("apellido").value = ''
+
+
+
+        }else{
+            alert("por favor digite nombre y apellido");
+     
+        }
+
+
+        
+        
+
+
+    }
+
+
+
+</script>
+</body>
